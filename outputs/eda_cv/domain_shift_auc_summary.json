@@ -1,0 +1,417 @@
+{
+  "feature_csv": "/media/hdd0/whyz/structure-stability/outputs/eda_cv/cv_features_max150.csv",
+  "sample_shape": [
+    400,
+    108
+  ],
+  "tasks": [
+    {
+      "task": "dev_vs_test",
+      "neg_split": "dev",
+      "pos_split": "test",
+      "n_samples": 250,
+      "class_counts": {
+        "0": 100,
+        "1": 150
+      },
+      "models": {
+        "logreg": {
+          "fold_auc": [
+            0.418333,
+            0.460833,
+            0.583333,
+            0.476667,
+            0.458333
+          ],
+          "mean_auc": 0.4795,
+          "std_auc": 0.055366,
+          "oof_auc": 0.4713,
+          "top_features": [
+            {
+              "feature": "delta_mean_b",
+              "importance": 0.69834
+            },
+            {
+              "feature": "top_brightness_std",
+              "importance": 0.667059
+            },
+            {
+              "feature": "delta_brightness_std",
+              "importance": 0.657457
+            },
+            {
+              "feature": "top_saturation_std",
+              "importance": 0.600562
+            },
+            {
+              "feature": "delta_std_b",
+              "importance": 0.588803
+            },
+            {
+              "feature": "front_structure_center_x",
+              "importance": 0.57773
+            },
+            {
+              "feature": "top_hue_entropy",
+              "importance": 0.514178
+            },
+            {
+              "feature": "delta_noise_residual_std",
+              "importance": 0.510214
+            },
+            {
+              "feature": "delta_std_g",
+              "importance": 0.475907
+            },
+            {
+              "feature": "top_distortion_proxy",
+              "importance": 0.468399
+            },
+            {
+              "feature": "top_vp_intersections",
+              "importance": 0.449021
+            },
+            {
+              "feature": "delta_structure_center_x",
+              "importance": 0.402057
+            }
+          ]
+        },
+        "rf": {
+          "fold_auc": [
+            0.356667,
+            0.275833,
+            0.411667,
+            0.336667,
+            0.37
+          ],
+          "mean_auc": 0.350167,
+          "std_auc": 0.044555,
+          "oof_auc": 0.3515,
+          "top_features": [
+            {
+              "feature": "front_structure_center_x",
+              "importance": 0.026571
+            },
+            {
+              "feature": "top_distortion_proxy",
+              "importance": 0.023861
+            },
+            {
+              "feature": "delta_structure_center_x",
+              "importance": 0.022121
+            },
+            {
+              "feature": "top_std_b",
+              "importance": 0.018239
+            },
+            {
+              "feature": "top_saturation_mean",
+              "importance": 0.016982
+            },
+            {
+              "feature": "top_structure_center_x",
+              "importance": 0.016506
+            },
+            {
+              "feature": "top_noise_residual_std",
+              "importance": 0.016262
+            },
+            {
+              "feature": "top_hue_entropy",
+              "importance": 0.015506
+            },
+            {
+              "feature": "delta_vp_spread",
+              "importance": 0.015195
+            },
+            {
+              "feature": "delta_saturation_mean",
+              "importance": 0.015079
+            },
+            {
+              "feature": "top_edge_density",
+              "importance": 0.015058
+            },
+            {
+              "feature": "top_vp_spread",
+              "importance": 0.014962
+            }
+          ]
+        }
+      }
+    },
+    {
+      "task": "train_vs_dev",
+      "neg_split": "train",
+      "pos_split": "dev",
+      "n_samples": 250,
+      "class_counts": {
+        "0": 150,
+        "1": 100
+      },
+      "models": {
+        "logreg": {
+          "fold_auc": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "mean_auc": 1.0,
+          "std_auc": 0.0,
+          "oof_auc": 1.0,
+          "top_features": [
+            {
+              "feature": "top_saturation_std",
+              "importance": 0.762968
+            },
+            {
+              "feature": "top_fft_high_freq_ratio",
+              "importance": 0.683712
+            },
+            {
+              "feature": "delta_fft_high_freq_ratio",
+              "importance": 0.659458
+            },
+            {
+              "feature": "top_hue_entropy",
+              "importance": 0.575402
+            },
+            {
+              "feature": "front_hue_entropy",
+              "importance": 0.570615
+            },
+            {
+              "feature": "front_fft_high_freq_ratio",
+              "importance": 0.53665
+            },
+            {
+              "feature": "top_saturation_mean",
+              "importance": 0.414912
+            },
+            {
+              "feature": "front_saturation_mean",
+              "importance": 0.412451
+            },
+            {
+              "feature": "delta_saturation_std",
+              "importance": 0.39723
+            },
+            {
+              "feature": "front_saturation_std",
+              "importance": 0.337853
+            },
+            {
+              "feature": "top_std_r",
+              "importance": 0.323242
+            },
+            {
+              "feature": "front_mean_r",
+              "importance": 0.273009
+            }
+          ]
+        },
+        "rf": {
+          "fold_auc": [
+            1.0,
+            1.0,
+            1.0,
+            0.993333,
+            1.0
+          ],
+          "mean_auc": 0.998667,
+          "std_auc": 0.002667,
+          "oof_auc": 0.9996,
+          "top_features": [
+            {
+              "feature": "top_distortion_proxy",
+              "importance": 0.106678
+            },
+            {
+              "feature": "top_mean_r",
+              "importance": 0.090516
+            },
+            {
+              "feature": "top_fft_high_freq_ratio",
+              "importance": 0.076424
+            },
+            {
+              "feature": "top_brightness_mean",
+              "importance": 0.073456
+            },
+            {
+              "feature": "top_saturation_std",
+              "importance": 0.070403
+            },
+            {
+              "feature": "front_mean_r",
+              "importance": 0.069734
+            },
+            {
+              "feature": "top_mean_b",
+              "importance": 0.060327
+            },
+            {
+              "feature": "front_brightness_mean",
+              "importance": 0.059674
+            },
+            {
+              "feature": "front_mean_g",
+              "importance": 0.050499
+            },
+            {
+              "feature": "top_mean_g",
+              "importance": 0.045856
+            },
+            {
+              "feature": "delta_fft_high_freq_ratio",
+              "importance": 0.042877
+            },
+            {
+              "feature": "front_fft_high_freq_ratio",
+              "importance": 0.038133
+            }
+          ]
+        }
+      }
+    },
+    {
+      "task": "train_vs_test",
+      "neg_split": "train",
+      "pos_split": "test",
+      "n_samples": 300,
+      "class_counts": {
+        "0": 150,
+        "1": 150
+      },
+      "models": {
+        "logreg": {
+          "fold_auc": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "mean_auc": 1.0,
+          "std_auc": 0.0,
+          "oof_auc": 1.0,
+          "top_features": [
+            {
+              "feature": "top_saturation_std",
+              "importance": 0.679164
+            },
+            {
+              "feature": "top_fft_high_freq_ratio",
+              "importance": 0.637885
+            },
+            {
+              "feature": "delta_fft_high_freq_ratio",
+              "importance": 0.626095
+            },
+            {
+              "feature": "front_hue_entropy",
+              "importance": 0.506832
+            },
+            {
+              "feature": "top_hue_entropy",
+              "importance": 0.471705
+            },
+            {
+              "feature": "top_vp_spread",
+              "importance": 0.468359
+            },
+            {
+              "feature": "front_fft_high_freq_ratio",
+              "importance": 0.46655
+            },
+            {
+              "feature": "delta_saturation_std",
+              "importance": 0.377535
+            },
+            {
+              "feature": "top_std_r",
+              "importance": 0.360341
+            },
+            {
+              "feature": "delta_vp_intersections",
+              "importance": 0.340167
+            },
+            {
+              "feature": "front_vp_spread",
+              "importance": 0.328332
+            },
+            {
+              "feature": "front_shadow_area_ratio",
+              "importance": 0.324577
+            }
+          ]
+        },
+        "rf": {
+          "fold_auc": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "mean_auc": 1.0,
+          "std_auc": 0.0,
+          "oof_auc": 0.999778,
+          "top_features": [
+            {
+              "feature": "top_saturation_std",
+              "importance": 0.10614
+            },
+            {
+              "feature": "top_distortion_proxy",
+              "importance": 0.093426
+            },
+            {
+              "feature": "front_mean_r",
+              "importance": 0.09263
+            },
+            {
+              "feature": "front_brightness_mean",
+              "importance": 0.086437
+            },
+            {
+              "feature": "top_mean_r",
+              "importance": 0.064698
+            },
+            {
+              "feature": "front_mean_g",
+              "importance": 0.059842
+            },
+            {
+              "feature": "front_mean_b",
+              "importance": 0.058109
+            },
+            {
+              "feature": "top_brightness_mean",
+              "importance": 0.053961
+            },
+            {
+              "feature": "top_fft_high_freq_ratio",
+              "importance": 0.052292
+            },
+            {
+              "feature": "top_mean_b",
+              "importance": 0.047887
+            },
+            {
+              "feature": "delta_fft_high_freq_ratio",
+              "importance": 0.034836
+            },
+            {
+              "feature": "top_std_r",
+              "importance": 0.031403
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

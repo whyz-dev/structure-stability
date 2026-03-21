@@ -1,0 +1,5 @@
+policy,enable_brightness,enable_top_rotation,best_epoch,best_val_logloss,best_val_acc,history_csv,checkpoint_path,train_rows,dev_rows
+raw,False,False,30,0.4202801264000488,0.85,/media/hdd0/whyz/structure-stability/outputs/eda_preprocessing/ablation_raw_history.csv,/media/hdd0/whyz/structure-stability/outputs/eda_preprocessing/ablation_raw.pt,1000,100
+rotation_only,False,True,30,0.4371407378493156,0.82,/media/hdd0/whyz/structure-stability/outputs/eda_preprocessing/ablation_rotation_only_history.csv,/media/hdd0/whyz/structure-stability/outputs/eda_preprocessing/ablation_rotation_only.pt,1000,100
+brightness_only,True,False,30,0.49013540366595515,0.75,/media/hdd0/whyz/structure-stability/outputs/eda_preprocessing/ablation_brightness_only_history.csv,/media/hdd0/whyz/structure-stability/outputs/eda_preprocessing/ablation_brightness_only.pt,1000,100
+brightness_and_rotation,True,True,30,0.493262461672763,0.74,/media/hdd0/whyz/structure-stability/outputs/eda_preprocessing/ablation_brightness_and_rotation_history.csv,/media/hdd0/whyz/structure-stability/outputs/eda_preprocessing/ablation_brightness_and_rotation.pt,1000,100
