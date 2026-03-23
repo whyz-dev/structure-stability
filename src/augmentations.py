@@ -1,7 +1,6 @@
 import torch
 from torchvision import transforms
 
-
 class AddGaussianNoise:
     def __init__(self, std: float = 0.02):
         self.std = std
@@ -9,7 +8,6 @@ class AddGaussianNoise:
     def __call__(self, tensor: torch.Tensor) -> torch.Tensor:
         noise = torch.randn_like(tensor) * self.std
         return torch.clamp(tensor + noise, 0.0, 1.0)
-
 
 def build_default_transforms(img_size: int):
     train_transform = transforms.Compose(

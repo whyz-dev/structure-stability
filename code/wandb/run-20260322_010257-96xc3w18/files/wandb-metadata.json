@@ -1,0 +1,39 @@
+{
+  "os": "Linux-6.17.0-1008-nvidia-aarch64-with-glibc2.39",
+  "python": "CPython 3.10.0",
+  "startedAt": "2026-03-21T16:02:57.855445Z",
+  "program": "/home/vsc/LLM_TUNE/structure-stability/code/extract_feature_from_vid.ipynb",
+  "codePath": "/home/vsc/LLM_TUNE/structure-stability/code/extract_feature_from_vid.ipynb",
+  "codePathLocal": "extract_feature_from_vid.ipynb",
+  "git": {
+    "remote": "https://github.com/whyz-dev/structure-stability.git",
+    "commit": "72cdde345a453eaaa993184cde3f014fc1b83b08"
+  },
+  "email": "jungseonglian@sju.ac.kr",
+  "root": "/home/vsc/LLM_TUNE/structure-stability/code",
+  "host": "spark-aecc",
+  "executable": "/home/vsc/LLM_TUNE/structure-stability/venv/venv-stability/bin/python",
+  "cpu_count": 20,
+  "cpu_count_logical": 20,
+  "gpu": "NVIDIA GB10",
+  "gpu_count": 1,
+  "disk": {
+    "/": {
+      "total": "4031871553536",
+      "used": "1697210916864"
+    }
+  },
+  "memory": {
+    "total": "128519340032"
+  },
+  "gpu_nvidia": [
+    {
+      "name": "NVIDIA GB10",
+      "cudaCores": 6144,
+      "architecture": "Blackwell",
+      "uuid": "GPU-f940b7ff-fb81-022d-8b75-718301052e80"
+    }
+  ],
+  "cudaVersion": "13.0",
+  "writerId": "5jje5v4oorrlbslz2ory26xzkvtlzp4g"
+}
