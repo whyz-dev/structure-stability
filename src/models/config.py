@@ -38,3 +38,19 @@ class MultiViewBidirectionalCrossAttentionConfig:
     classifier_mid_dim: int = 128
     classifier_dropout: float = 0.3
     out_dim: int = 1
+
+
+@dataclass(frozen=True)
+class MultiViewDualEncoderBidirectionalCrossAttentionConfig:
+    front_backbone_name: str = "efficientnetv2_rw_s"
+    top_backbone_name: str | None = None
+    pretrained: bool = True
+    attn_dim: int = 256
+    num_heads: int = 8
+    num_layers: int = 2
+    pos_grid: int = 7
+    dropout: float = 0.1
+    classifier_hidden_dim: int = 512
+    classifier_mid_dim: int = 128
+    classifier_dropout: float = 0.3
+    out_dim: int = 1

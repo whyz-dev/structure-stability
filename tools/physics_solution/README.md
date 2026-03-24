@@ -63,6 +63,25 @@ cd /Users/mgo/Downloads/physics_solution
 
 ## CLI workflow
 
+### 0) class 중심 feature selection / 분석
+`eda v2`의 image handcrafted feature 패턴을 `physics_solution`으로 옮겨와서, `class` 기준으로 feature relevance를 봅니다.
+노트북 경로: `notebooks/physics_solution_class_feature_selection_v1.0.ipynb`
+
+저장되는 주요 결과:
+- `image_view_features.csv` : front/top view별 raw image feature
+- `geometry_sample_features.csv` : sample 단위 geometry feature
+- `class_analysis_features.csv` : 최종 분석용 merged feature table
+- `feature_correlation_matrix.csv` : feature + class correlation matrix
+- `feature_target_correlation.csv` : class와의 상관계수 랭킹
+- `classification_eval.csv` : CV classifier 성능
+- `classification_feature_importance.csv` : 성능이 일정 기준 이상일 때의 importance
+- `interaction_candidates.csv` : product/ratio 기반 interaction 후보
+- `pca_top_loadings.csv`, `pca_sample_projection.csv`, `cluster_class_summary.csv` : 상위 latent feature/cluster 탐색 결과
+
+설정 셀에서 `DATA_ROOT`, `OUT_DIR`, `MAX_SAMPLES_PER_SPLIT` 등을 조정한 뒤 순서대로 실행하면 됩니다.
+빠른 스모크는 `MAX_SAMPLES_PER_SPLIT = 10` 처럼 두고 확인하면 됩니다.
+motion feature까지 합치고 싶으면 먼저 `extract-motion` 을 돌린 뒤 `data_root/motion_targets.csv` 가 있도록 맞추면 됩니다.
+
 ### 1) train video에서 motion target 추출
 ```bash
 python full_physics_solution.py extract-motion
