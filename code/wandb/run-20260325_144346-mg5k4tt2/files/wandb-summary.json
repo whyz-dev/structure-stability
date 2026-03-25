@@ -1,0 +1,1 @@
+{"early_stop_count":9,"train/loss":0.4467100069877949,"_wandb":{"runtime":400},"_step":29,"lr":0.0002457948864674291,"val/logloss":0.5211265857322545,"val/acc":0.65,"_runtime":400.117259241,"distill_weight":0.1,"_timestamp":1.7744235851821978e+09,"epoch":29,"best_logloss":0.29231463754720294,"temperature":2}
