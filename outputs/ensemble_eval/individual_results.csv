@@ -1,3 +1,0 @@
-name,architecture,backbone_name,saved_val_logloss,best_tta,dev_logloss,checkpoint_path
-baseline_v2.2.1,bidir,efficientnetv2_rw_s,0.19122777100178048,none+hflip,0.17130474024723033,/media/hdd0/whyz/structure-stability/outputs/weights/baseline_v2.2.1.pt
-baseline_v2.2.0,bidir,efficientnetv2_rw_s,0.3949660938549514,none+hflip+crop95,0.39269906811402,/media/hdd0/whyz/structure-stability/outputs/weights/baseline_v2.2.0.pt
