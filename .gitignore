@@ -18,6 +18,7 @@ env/
 data/
 
 # Training artifacts and model weights
+code/wandb/
 outputs/weights/
 *.pt
 *.pth
