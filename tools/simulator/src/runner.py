@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 import argparse
-import json
 from pathlib import Path
 
 import cv2
@@ -22,29 +21,6 @@ from .scene import (
     step_world,
 )
 from .seed import build_mode_schedule, scene_seed, sim_seed
-
-
-def apply_initial_perturbation(body_ids: list[int], unstable: bool, sim_rng: np.random.Generator) -> None:
-    positions = np.array([p.getBasePositionAndOrientation(body_id)[0] for body_id in body_ids], dtype=np.float64)
-    center_xy = np.mean(positions[:, :2], axis=0)
-    z_med = float(np.median(positions[:, 2]))
-
-    for body_id, pos in zip(body_ids, positions):
-        radial = pos[:2] - center_xy
-        norm = float(np.linalg.norm(radial))
-        if norm > 1e-8:
-            radial = radial / norm
-        else:
-            radial = np.array([1.0, 0.0], dtype=np.float64)
-
-        lin = np.zeros(3, dtype=np.float64)
-        ang = np.zeros(3, dtype=np.float64)
-        if unstable:
-            lin[:2] += radial * sim_rng.uniform(0.03, 0.10)
-            if pos[2] >= z_med:
-                lin[:2] += radial * sim_rng.uniform(0.08, 0.18)
-                lin[2] -= sim_rng.uniform(0.01, 0.05)
-        p.resetBaseVelocity(body_id, linearVelocity=lin.tolist(), angularVelocity=ang.tolist())
 
 
 def detect_unstable(body_ids: list[int], init_positions: np.ndarray, final_positions: np.ndarray) -> bool:
@@ -79,7 +55,6 @@ def run_single(
     seed: int,
     mode: str,
     cfg: SimConfig,
-    sim_seed_value: int | None = None,
     gui: bool = False,
 ) -> dict:
     out_dir = ensure_sample_dir(out_root, sample_id)
@@ -102,8 +77,7 @@ def run_single(
                 if target_label == "stable" and attempt < max_tries - 1:
                     continue
 
-            actual_sim_seed = sim_seed(scene_seed_value, sim_seed_value, attempt)
-            apply_initial_perturbation(body_ids, unstable_requested, np.random.default_rng(actual_sim_seed))
+            actual_sim_seed = sim_seed(scene_seed_value)
 
             writer = open_writer(out_dir / "simulation.mp4", cfg)
             first_front = render_front(cfg)
@@ -174,7 +148,6 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--start-index", type=int, default=1)
     parser.add_argument("--count", type=int, default=1)
     parser.add_argument("--seed", type=int, default=42)
-    parser.add_argument("--sim-seed", type=int, default=None)
     parser.add_argument("--mode", type=str, choices=["stable", "unstable", "random"], default="random")
     parser.add_argument("--gui", action="store_true")
     return parser.parse_args()
@@ -194,7 +167,6 @@ def main() -> None:
             seed=args.seed + i,
             mode=mode_i,
             cfg=cfg,
-            sim_seed_value=(None if args.sim_seed is None else args.sim_seed + i),
             gui=args.gui,
         )
         rows.append(meta)

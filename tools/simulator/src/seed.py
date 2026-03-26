@@ -18,7 +18,5 @@ def scene_seed(base_seed: int, attempt: int) -> int:
     return base_seed + attempt * 100003
 
 
-def sim_seed(scene_seed_value: int, base_sim_seed: int | None, attempt: int) -> int:
-    if base_sim_seed is None:
-        return int((scene_seed_value * 1664525 + 1013904223) & 0xFFFFFFFF)
-    return int(base_sim_seed + attempt * 100003)
+def sim_seed(scene_seed_value: int) -> int:
+    return int((scene_seed_value * 1664525 + 1013904223) & 0xFFFFFFFF)
