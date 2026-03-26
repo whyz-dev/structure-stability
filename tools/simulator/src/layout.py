@@ -14,8 +14,8 @@ def _compute_mass(dx: float, dy: float, dz: float, density: float) -> float:
 def block_dims(rng: np.random.Generator, cfg: SimConfig) -> tuple[float, float, float]:
     scale = rng.uniform(1.0 - cfg.edge_jitter, 1.0 + cfg.edge_jitter)
     dx = cfg.block_edge * scale
-    dy = cfg.block_edge * rng.uniform(0.92, 1.08) * scale
-    dz = cfg.block_edge * rng.uniform(0.86, 1.02) * scale
+    dy = cfg.block_edge * scale
+    dz = cfg.block_edge * 0.70 * scale
     return dx, dy, dz
 
 
@@ -366,9 +366,7 @@ def build_unstable_bridge_layout(rng: np.random.Generator, cfg: SimConfig) -> li
         append_candidate(placements, candidate_dict(right_x, 0.0, z, dx, dy, dz), cfg, margin=0.0)
         top_right = placements[-1].z + placements[-1].dz / 2.0
 
-    beam_dx = gap + cfg.block_edge * float(rng.uniform(1.4, 1.8))
-    beam_dy = cfg.block_edge * float(rng.uniform(0.90, 1.05))
-    beam_dz = cfg.block_edge * float(rng.uniform(0.92, 1.02))
+    beam_dx, beam_dy, beam_dz = block_dims(rng, cfg)
     beam_z = max(top_left, top_right) + beam_dz / 2.0 + cfg.gap
     append_candidate(placements, candidate_dict(0.0, 0.0, beam_z, beam_dx, beam_dy, beam_dz), cfg, margin=0.004 * beam_dy)
 

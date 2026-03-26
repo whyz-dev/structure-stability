@@ -1,0 +1,2 @@
+model_a,model_b,alpha_for_a,alpha_for_b,blend_logloss,best_single_logloss,improvement
+baseline_v2.2.0,baseline_v2.2.1,0.0,1.0,0.17130474024723033,0.17130474024723033,0.0

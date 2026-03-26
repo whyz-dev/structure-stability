@@ -1,0 +1,33 @@
+{
+  "best_kind": "triple",
+  "best_dev_logloss": 0.0355911825269572,
+  "best_single": {
+    "model": "teacher_regularization_v3.1",
+    "dev_logloss": 0.036174725014413614,
+    "improvement": 0.0
+  },
+  "best_pair": {
+    "model_a": "teacher_regularization_v3.1",
+    "model_b": "teacher_regularization_v1.6.0",
+    "weight_a": 0.8,
+    "weight_b": 0.2,
+    "dev_logloss": 0.035591182526957234,
+    "improvement": 0.0005835424874563802
+  },
+  "best_triple": {
+    "model_a": "teacher_regularization_v3.1",
+    "model_b": "teacher_regularization_v1.6.0",
+    "model_c": "teacher_regularization_v1.2.0",
+    "weight_a": 0.8,
+    "weight_b": 0.2,
+    "weight_c": 0.0,
+    "dev_logloss": 0.0355911825269572,
+    "improvement": 0.0005835424874564149
+  },
+  "selected_weights": {
+    "teacher_regularization_v3.1": 0.8,
+    "teacher_regularization_v1.6.0": 0.2
+  },
+  "submission_path": "/media/hdd0/whyz/structure-stability/outputs/dev_prob_ensemble_v1_6_refresh/best_dev_ensemble_submission.csv",
+  "n_models": 47
+}

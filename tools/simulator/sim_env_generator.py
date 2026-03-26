@@ -25,16 +25,16 @@ class SimConfig:
     world_half: float = 1.6
 
     density: float = 650.0
-    restitution: float = 0.04
-    lateral_friction: float = 0.82
-    spinning_friction: float = 0.08
-    rolling_friction: float = 0.02
-    linear_damping: float = 0.03
-    angular_damping: float = 0.06
+    restitution: float = 0.0
+    lateral_friction: float = 0.90
+    spinning_friction: float = 0.12
+    rolling_friction: float = 0.04
+    linear_damping: float = 0.18
+    angular_damping: float = 0.30
 
     block_edge: float = 0.24
-    edge_jitter: float = 0.10
-    gap: float = 0.003
+    edge_jitter: float = 0.0
+    gap: float = 0.005
     min_floors: int = 4
     max_floors: int = 8
 
@@ -99,8 +99,8 @@ def _compute_mass(dx: float, dy: float, dz: float, density: float) -> float:
 def _block_dims(rng: np.random.Generator, cfg: SimConfig) -> tuple[float, float, float]:
     scale = rng.uniform(1.0 - cfg.edge_jitter, 1.0 + cfg.edge_jitter)
     dx = cfg.block_edge * scale
-    dy = cfg.block_edge * rng.uniform(0.92, 1.08) * scale
-    dz = cfg.block_edge * rng.uniform(0.86, 1.02) * scale
+    dy = cfg.block_edge * scale
+    dz = cfg.block_edge * 0.70 * scale
     return dx, dy, dz
 
 
@@ -733,37 +733,6 @@ def create_structure(rng: np.random.Generator, unstable: bool, cfg: SimConfig) -
     return body_ids
 
 
-def apply_initial_perturbation(
-    body_ids: list[int],
-    unstable: bool,
-    sim_rng: np.random.Generator,
-    cfg: SimConfig,
-) -> None:
-    positions = np.array([p.getBasePositionAndOrientation(body_id)[0] for body_id in body_ids], dtype=np.float64)
-    center_xy = np.mean(positions[:, :2], axis=0)
-    z_med = float(np.median(positions[:, 2]))
-
-    for body_id, pos in zip(body_ids, positions):
-        radial = pos[:2] - center_xy
-        norm = float(np.linalg.norm(radial))
-        radial = radial / norm if norm > 1e-8 else np.array([1.0, 0.0], dtype=np.float64)
-
-        if unstable:
-            lin = np.array([sim_rng.uniform(-0.015, 0.015), sim_rng.uniform(-0.015, 0.015), 0.0], dtype=np.float64)
-        else:
-            lin = np.zeros(3, dtype=np.float64)
-        ang = np.zeros(3, dtype=np.float64)
-
-        if unstable:
-            if pos[2] >= z_med:
-                lin[:2] += radial * sim_rng.uniform(0.12, 0.24) * cfg.unstable_push_scale
-                lin[2] -= sim_rng.uniform(0.02, 0.08)
-            else:
-                lin[:2] += radial * sim_rng.uniform(0.02, 0.08) * cfg.unstable_push_scale
-
-        p.resetBaseVelocity(body_id, linearVelocity=lin.tolist(), angularVelocity=ang.tolist())
-
-
 def settle_prepass(steps: int = 30) -> None:
     for _ in range(steps):
         p.stepSimulation()
@@ -864,7 +833,6 @@ def run_single(
     seed: int,
     mode: str,
     cfg: SimConfig,
-    sim_seed: int | None = None,
     gui: bool = False,
 ) -> dict:
     out_dir = out_root / sample_id
@@ -906,9 +874,7 @@ def run_single(
             num_blocks = len(body_ids)
             settle_prepass(steps=(40 if not unstable_requested else 20))
 
-            base_sim_seed = (scene_seed * 1664525 + 1013904223) & 0xFFFFFFFF if sim_seed is None else sim_seed + attempt * 100003
-            actual_sim_seed = int(base_sim_seed)
-            apply_initial_perturbation(body_ids, unstable_requested, np.random.default_rng(actual_sim_seed), cfg)
+            actual_sim_seed = int((scene_seed * 1664525 + 1013904223) & 0xFFFFFFFF)
 
             video_path = out_dir / "simulation.mp4"
             writer = cv2.VideoWriter(
@@ -984,7 +950,6 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--start-index", type=int, default=1)
     parser.add_argument("--count", type=int, default=1)
     parser.add_argument("--seed", type=int, default=42)
-    parser.add_argument("--sim-seed", type=int, default=None)
     parser.add_argument("--mode", type=str, choices=["stable", "unstable", "random"], default="random")
     parser.add_argument("--gui", action="store_true")
     return parser.parse_args()
@@ -1012,7 +977,6 @@ def main() -> None:
             seed=args.seed + i,
             mode=mode_i,
             cfg=cfg,
-            sim_seed=(None if args.sim_seed is None else args.sim_seed + i),
             gui=args.gui,
         )
         rows.append(meta)

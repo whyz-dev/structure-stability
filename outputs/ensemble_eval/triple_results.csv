@@ -1,0 +1,2 @@
+model_a,model_b,model_c,w_a,w_b,w_c,blend_logloss,best_single_logloss,improvement
+baseline_v2.2.1,mv_caf_backbone_test_swin_tiny_patch4_window7_224_ms_in22k_ft_in1k_v1.1,mv_caf_backbone_test_convnext_small_fb_in22k_ft_in1k_v1.2,0.0,0.6000000000000001,0.3999999999999999,0.07892597928351508,0.08818083111605057,0.009254851832535493
