@@ -1,1 +1,0 @@
-{"_wandb":{"runtime":0},"epoch":28,"val/acc":0.52,"early_stop_count":9,"lr":0.0002493661238658859,"best_logloss":0.17602271033030858,"val/logloss":0.8609404402986841,"_runtime":0.206345887,"train/loss":0.048918458157555855,"_step":28,"_timestamp":1.7743435056219757e+09}

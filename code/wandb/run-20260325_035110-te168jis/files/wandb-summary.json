@@ -1,1 +1,0 @@
-{"epoch":28,"train/loss":5.8793221027293106,"_runtime":5.411820421,"lr":0.0002493661238658859,"_wandb":{"runtime":5},"val/acc":0.52,"temperature":4,"_step":28,"distill_weight":0.5,"_timestamp":1.7743807506677628e+09,"early_stop_count":9,"val/logloss":0.7029975818859698,"best_logloss":0.42281289646564696}

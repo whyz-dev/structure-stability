@@ -1,1 +1,0 @@
-{"early_stop_count":9,"_timestamp":1.7743633020506396e+09,"best_logloss":0.025737274292733134,"val/logloss":0.06412984522026609,"train/loss":0.05992493724965669,"_runtime":0.293340878,"val/acc":0.99,"lr":0.00020114131907667107,"_step":40,"_wandb":{"runtime":0},"epoch":40}

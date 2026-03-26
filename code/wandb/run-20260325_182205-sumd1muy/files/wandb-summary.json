@@ -1,1 +1,0 @@
-{"best_logloss":0.05281576785284383,"_wandb":{"runtime":2},"_step":40,"train/epoch_task_loss":0.0028771764387938866,"train/epoch_distill_loss":0.06844575651624102,"val/logloss":0.0975089046369116,"lr":0.00020114131907667107,"early_stop_count":9,"_runtime":2.349695413,"_timestamp":1.7744331491090922e+09,"epoch":40,"train/epoch_total_loss":0.07132293287902436,"val/acc":0.96}
