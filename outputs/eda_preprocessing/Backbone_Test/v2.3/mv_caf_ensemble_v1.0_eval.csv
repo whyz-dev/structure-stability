@@ -1,0 +1,10 @@
+backbone,target_epochs,best_epoch,val_logloss,val_acc,model_path
+swin_tiny_patch4_window7_224.ms_in22k_ft_in1k,100,87,0.15680654655287168,0.92,/home/vsc/LLM_TUNE/structure-stability/outputs/weights/Backbone_Test/v2.3/best_model_swin_tiny_patch4_window7_224_ms_in22k_ft_in1k_100.pt
+efficientnetv2_rw_s,100,100,0.2092072646747572,0.87,/home/vsc/LLM_TUNE/structure-stability/outputs/weights/Backbone_Test/v2.3/best_model_efficientnetv2_rw_s_100.pt
+efficientnetv2_rw_s,50,50,0.435294881362495,0.8,/home/vsc/LLM_TUNE/structure-stability/outputs/weights/Backbone_Test/v2.3/best_model_efficientnetv2_rw_s_50.pt
+swin_tiny_patch4_window7_224.ms_in22k_ft_in1k,50,50,0.46307925325546984,0.75,/home/vsc/LLM_TUNE/structure-stability/outputs/weights/Backbone_Test/v2.3/best_model_swin_tiny_patch4_window7_224_ms_in22k_ft_in1k_50.pt
+efficientnetv2_rw_s,30,30,0.596773892338577,0.8,/home/vsc/LLM_TUNE/structure-stability/outputs/weights/Backbone_Test/v2.3/best_model_efficientnetv2_rw_s_30.pt
+swin_tiny_patch4_window7_224.ms_in22k_ft_in1k,30,18,0.6521665246991823,0.52,/home/vsc/LLM_TUNE/structure-stability/outputs/weights/Backbone_Test/v2.3/best_model_swin_tiny_patch4_window7_224_ms_in22k_ft_in1k_30.pt
+convnext_tiny.fb_in22k_ft_in1k,50,12,0.6648150606623966,0.54,/home/vsc/LLM_TUNE/structure-stability/outputs/weights/Backbone_Test/v2.3/best_model_convnext_tiny_fb_in22k_ft_in1k_50.pt
+convnext_tiny.fb_in22k_ft_in1k,30,3,0.6855878923479152,0.55,/home/vsc/LLM_TUNE/structure-stability/outputs/weights/Backbone_Test/v2.3/best_model_convnext_tiny_fb_in22k_ft_in1k_30.pt
+convnext_tiny.fb_in22k_ft_in1k,100,4,0.6906212214656555,0.52,/home/vsc/LLM_TUNE/structure-stability/outputs/weights/Backbone_Test/v2.3/best_model_convnext_tiny_fb_in22k_ft_in1k_100.pt
