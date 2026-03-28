@@ -8,7 +8,4 @@ Pillow
 opencv-python
 jupyter
 ipykernel
-
-torch
-torchvision
 timm
