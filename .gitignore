@@ -18,6 +18,9 @@ env/
 data/
 
 # Training artifacts and model weights
+outputs/*
+!outputs/submissions/
+!outputs/submissions/**
 outputs/weights/
 *.pt
 *.pth

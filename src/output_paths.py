@@ -1,8 +1,17 @@
 from pathlib import Path
 
 
+def _project_root_from_cwd() -> Path:
+    cwd = Path.cwd().resolve()
+    for base in (cwd, *cwd.parents):
+        # Project root markers used in this repo.
+        if (base / "src").is_dir() and (base / "notebooks").is_dir():
+            return base
+    return cwd
+
+
 def _default_output_root() -> Path:
-    return (Path.cwd() / "../outputs").resolve()
+    return (_project_root_from_cwd() / "outputs").resolve()
 
 
 def allocate_output_paths(experiment_name: str, major_version: str, output_root: Path | None = None):
