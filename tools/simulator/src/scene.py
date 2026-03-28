@@ -167,7 +167,16 @@ def _camera_matrices(cam: CameraSpec, cfg: SimConfig) -> tuple[list[float], list
     return view, proj
 
 
-def _capture_camera(view: list[float], proj: list[float], cfg: SimConfig, shadow: int) -> np.ndarray:
+def _capture_camera(
+    view: list[float],
+    proj: list[float],
+    cfg: SimConfig,
+    shadow: int,
+    light_direction: tuple[float, float, float] | None = None,
+    light_color: tuple[float, float, float] | None = None,
+) -> np.ndarray:
+    light_dir = list(light_direction or cfg.light_dir)
+    light_rgb = list(light_color or (1.0, 1.0, 1.0))
     try:
         _, _, rgba, _, _ = p.getCameraImage(
             width=cfg.width,
@@ -176,8 +185,8 @@ def _capture_camera(view: list[float], proj: list[float], cfg: SimConfig, shadow
             projectionMatrix=proj,
             renderer=p.ER_BULLET_HARDWARE_OPENGL,
             shadow=shadow,
-            lightDirection=list(cfg.light_dir),
-            lightColor=[1.0, 1.0, 1.0],
+            lightDirection=light_dir,
+            lightColor=light_rgb,
         )
     except p.error:
         _, _, rgba, _, _ = p.getCameraImage(
@@ -187,20 +196,55 @@ def _capture_camera(view: list[float], proj: list[float], cfg: SimConfig, shadow
             projectionMatrix=proj,
             renderer=p.ER_TINY_RENDERER,
             shadow=0,
-            lightDirection=list(cfg.light_dir),
-            lightColor=[1.0, 1.0, 1.0],
+            lightDirection=light_dir,
+            lightColor=light_rgb,
         )
     return np.asarray(rgba, dtype=np.uint8).reshape(cfg.height, cfg.width, 4)[..., :3]
 
 
-def render_camera(cam: CameraSpec, cfg: SimConfig, shadow: int) -> np.ndarray:
+def render_camera(
+    cam: CameraSpec,
+    cfg: SimConfig,
+    shadow: int,
+    light_direction: tuple[float, float, float] | None = None,
+    light_color: tuple[float, float, float] | None = None,
+) -> np.ndarray:
     view, proj = _camera_matrices(cam, cfg)
-    return _capture_camera(view, proj, cfg, shadow=shadow)
+    return _capture_camera(
+        view,
+        proj,
+        cfg,
+        shadow=shadow,
+        light_direction=light_direction,
+        light_color=light_color,
+    )
 
 
-def render_front(cfg: SimConfig) -> np.ndarray:
-    return render_camera(front_camera(), cfg, shadow=1)
+def render_front(
+    cfg: SimConfig,
+    cam: CameraSpec | None = None,
+    light_direction: tuple[float, float, float] | None = None,
+    light_color: tuple[float, float, float] | None = None,
+) -> np.ndarray:
+    return render_camera(
+        cam or front_camera(),
+        cfg,
+        shadow=1,
+        light_direction=light_direction,
+        light_color=light_color,
+    )
 
 
-def render_top(cfg: SimConfig) -> np.ndarray:
-    return render_camera(top_camera(), cfg, shadow=0)
+def render_top(
+    cfg: SimConfig,
+    cam: CameraSpec | None = None,
+    light_direction: tuple[float, float, float] | None = None,
+    light_color: tuple[float, float, float] | None = None,
+) -> np.ndarray:
+    return render_camera(
+        cam or top_camera(),
+        cfg,
+        shadow=0,
+        light_direction=light_direction,
+        light_color=light_color,
+    )
