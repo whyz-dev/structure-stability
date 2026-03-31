@@ -1,0 +1,4 @@
+teacher_backbone,student_backbone,target_epochs,best_epoch,val_logloss,val_acc,model_path
+efficientnetv2_rw_m,efficientnetv2_rw_m,30,12,0.10393928772698667,0.98,/home/vsc/LLM_TUNE/structure-stability/outputs/weights/Knowledge Distillation/v3/best_model_efficientnetv2_rw_m_30.pt
+efficientnetv2_rw_m,efficientnetv2_rw_m,50,22,0.12009483826353978,0.99,/home/vsc/LLM_TUNE/structure-stability/outputs/weights/Knowledge Distillation/v3/best_model_efficientnetv2_rw_m_50.pt
+efficientnetv2_rw_m,efficientnetv2_rw_m,100,10,0.12302479026891597,0.97,/home/vsc/LLM_TUNE/structure-stability/outputs/weights/Knowledge Distillation/v3/best_model_efficientnetv2_rw_m_100.pt

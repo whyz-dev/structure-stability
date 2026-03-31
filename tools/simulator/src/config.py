@@ -16,16 +16,16 @@ class SimConfig:
     world_half: float = 1.6
 
     density: float = 650.0
-    restitution: float = 0.04
-    lateral_friction: float = 0.82
-    spinning_friction: float = 0.08
-    rolling_friction: float = 0.02
-    linear_damping: float = 0.03
-    angular_damping: float = 0.06
+    restitution: float = 0.0
+    lateral_friction: float = 0.90
+    spinning_friction: float = 0.12
+    rolling_friction: float = 0.04
+    linear_damping: float = 0.18
+    angular_damping: float = 0.30
 
     block_edge: float = 0.24
-    edge_jitter: float = 0.10
-    gap: float = 0.003
+    edge_jitter: float = 0.0
+    gap: float = 0.005
 
     min_stable_blocks: int = 10
     max_stable_blocks: int = 16
