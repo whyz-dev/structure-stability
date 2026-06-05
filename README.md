@@ -5,7 +5,7 @@
 [![Checkerboard Norm](https://img.shields.io/badge/Checkerboard-Top%20View%20Norm-5C3EE8)](https://jungseong.github.io/contests/structure-stability/#core-workflows)
 [![Grouped CV](https://img.shields.io/badge/Grouped%20CV-Fold%20Ensemble-F9AB00)](https://jungseong.github.io/contests/structure-stability/#core-workflows)
 
-[한국어](README.ko.md) | [English](README.en.md)
+[한국어](readme/README.ko.md) | [English](readme/README.en.md)
 
 구조물 안정성 예측을 위한 physics-aware dual-view 컴퓨터 비전 워크스페이스입니다. 주요 파이프라인은 front/top view 이미지 모델링, top view 체커보드 기반 회전 정규화, motion pseudo target, grouped cross validation, fold ensemble submission 생성을 결합합니다.
 
