@@ -1,11 +1,27 @@
+# Core data / scientific stack
 numpy
 pandas
 scikit-learn
+
+# Visualization and notebooks
 matplotlib
 seaborn
-tqdm
-Pillow
-opencv-python
 jupyter
 ipykernel
+ipython
+
+# Image processing
+Pillow
+opencv-python
+
+# Deep learning
+torch
+torchvision
 timm
+transformers
+wandb
+
+# Simulation and utilities
+pybullet
+pytz
+tqdm
