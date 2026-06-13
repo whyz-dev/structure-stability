@@ -49,10 +49,6 @@
 5.
 ```
 
-## 문서
-- [시작하기](https://jungseong.github.io/contests/structure-stability/#getting-started)
-- [주요 워크플로우](https://jungseong.github.io/contests/structure-stability/#core-workflows)
-
 ## 시작하기
 
 ### 1. 가상환경 설정
@@ -66,7 +62,7 @@ pip install -r requirements.txt
 
 ### 2. 가상환경 커널 등록
 ```bash
-python -m ipykernel install --user --name .venv --display-name stability
+python3 -m ipykernel install --user --name .venv --display-name stability
 ```
 위 가상환경을 커널로 사용하여 각 노트북을 실행할 수 있습니다.
 

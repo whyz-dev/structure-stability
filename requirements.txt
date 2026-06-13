@@ -7,6 +7,9 @@ scikit-learn
 matplotlib
 seaborn
 jupyter
+notebook
+nbconvert
+nbformat
 ipykernel
 ipython
 
@@ -20,6 +23,7 @@ torchvision
 timm
 transformers
 wandb
+huggingface-hub
 
 # Simulation and utilities
 pybullet
