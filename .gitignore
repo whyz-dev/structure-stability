@@ -32,6 +32,7 @@ outputs/weights/
 # Media assets not intended for GitHub
 *.mp4
 *.png
+!pdf/preview/*.png
 
 # Optional local outputs
 *.log
