@@ -9,7 +9,7 @@ from .config import MultiViewBidirectionalCrossAttentionConfig
 class CrossAttentionBlock(nn.Module):
     def __init__(self, dim: int, num_heads: int, dropout: float = 0.1):
         super().__init__()
-        self.norm_q = nn.LayerNorm(dim)
+        self.norm_q = nn.LayerNorm(dim) # 각 샘플 / 각 토큰마다 독립적으로 정규화
         self.norm_kv = nn.LayerNorm(dim)
         self.attn = nn.MultiheadAttention(dim, num_heads, dropout=dropout, batch_first=True)
 

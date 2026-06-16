@@ -41,13 +41,19 @@
 </details>
 
 ## Key Contributions
+
 ```
-1. front/top view 이미지 전처리
-2. 
-3. 
-4.
-5.
+1. MultiView Bidirectional Cross Attention Model 설계, 기존 FeatureFusion model 대비 logloss 48.2% 및 accuracy 3.13% 개선
+2. VideoMAE로 영상 데이터에서 특징 벡터 추출 및 Distillation Regularization 추가해 학습, Baseline 대비 logloss 86.3% 및 accuracy 8% 개선
+3. BackBone, Epochs, Batch Size등 HyperParameter Search 수행, Worst Trial 대비 logloss 91.2% 및 accuracy 6% 개선
 ```
+<br>
+
+<img src="pdf/preview/structure-stability-competition-1.png" alt="구조물 안정성 물리 추론 AI 경진대회 1페이지" width="100%">
+
+<img src="pdf/preview/structure-stability-competition-2.png" alt="구조물 안정성 물리 추론 AI 경진대회 2페이지" width="100%">
+
+[원본 PDF 보기](<pdf/구조물 안정성 물리 추론 AI 경진대회.pdf>)
 
 ## 시작하기
 
@@ -64,28 +70,26 @@ pip install -r requirements.txt
 ```bash
 python3 -m ipykernel install --user --name .venv --display-name stability
 ```
-위 가상환경을 커널로 사용하여 각 노트북을 실행할 수 있습니다.
 
-### 3. 최종 파이프라인 실행:
-```bash
-cd tools/physics_solution
-python full_physics_solution.py full-run \
-  --out-dir runs/final \
-  --backbone efficientnet_v2_s \
-  --pretrained \
-  --image-size 320 \
-  --batch-size 8 \
-  --epochs 12 \
-  --num-folds 5
-```
+위 가상환경을 커널로 사용하여 각 노트북을 실행할 수 있습니다.
 
 ## 저장소 구조
 
 | 경로 | 역할 |
 |------|------|
-| `src/` | 공통 전처리, 증강, 모델, 재현성 유틸리티 |
-| `notebooks/eda/` | EDA 및 feature selection 노트북 |
-| `notebooks/train/` | 학습 실험 및 ablation 노트북 |
-| `code/` | regularization, distillation, backbone selection 실험 |
+| `data/` | train/dev/test 메타데이터와 대회 데이터 |
+| `src/` | 공통 전처리, 증강, 모델, 재현성, 출력 경로 유틸리티 |
+| `src/models/` | MultiView Feature Fusion, Cross Attention 계열 모델 구현 |
+| `notebooks/eda/` | EDA, 전처리 분석, feature selection 노트북 |
+| `notebooks/train/` | baseline, regularization, distillation, ablation 학습 노트북 |
+| `notebooks/test/` | backbone 테스트, seed sweep, ensemble/submission 분석 노트북 |
+| `code/` | 모델 비교, regularization, distillation, backbone selection 실험 |
+| `code/huggingface/` | Hugging Face Hub 업로드/로드 유틸리티 |
+| `tools/` | 실험 분석, 앙상블, 전처리 ablation 실행 스크립트 |
 | `tools/physics_solution/` | physics-aware 파이프라인과 Colab 워크플로우 |
-| `outputs/submissions/` | 생성된 submission 산출물 |
+| `tools/simulator/` | 구조물 생성 및 렌더링 실험 |
+| `outputs/submissions/` | 생성된 submission CSV 산출물 |
+| `outputs/model_comparison/` | 모델 비교 결과, history, submission 산출물 |
+| `outputs/eda_preprocessing/` | EDA/전처리 분석 산출물 |
+| `pdf/` | 대회 PDF와 README 표시용 preview 이미지 |
+| `readme/` | 한국어/영문 README 문서 |
