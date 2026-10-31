@@ -1,0 +1,358 @@
+<mxfile host="65bd71144e">
+    <diagram id="feature-fusion" name="MultiViewFeatureFusion">
+        <mxGraphModel dx="912" dy="1014" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="800" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="ff-title" value="MultiViewFeatureFusion" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontStyle=1;fontSize=22" parent="1" vertex="1">
+                    <mxGeometry x="360" y="30" width="480" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="ff-f1" value="f_front" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13" parent="1" vertex="1">
+                    <mxGeometry x="560" y="130" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="ff-f2" value="f_top" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13" parent="1" vertex="1">
+                    <mxGeometry x="560" y="280" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="ff-concat" value="concat&#xa;[f_front, f_top, |diff|, product]&#xa;feature_dim * 4" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=13" parent="1" vertex="1">
+                    <mxGeometry x="750" y="185" width="240" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="ff-mlp" value="MLP" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=13" parent="1" vertex="1">
+                    <mxGeometry x="750" y="390" width="240" height="105" as="geometry"/>
+                </mxCell>
+                <mxCell id="ff-out" value="stability logit&#xa;out_dim=1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=13;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="815" y="570" width="110" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="ff-e1" style="endArrow=block;html=1;rounded=0;strokeWidth=2" parent="1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="230" y="160" as="sourcePoint"/>
+                        <mxPoint x="299.9999999999999" y="160" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="ff-e2" style="endArrow=block;html=1;rounded=0;strokeWidth=2" parent="1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="230" y="309.9999999999998" as="sourcePoint"/>
+                        <mxPoint x="299.9999999999999" y="309.9999999999998" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="ff-e3" style="endArrow=block;html=1;rounded=0;strokeWidth=2" parent="1" target="ff-f1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="490" y="160" as="sourcePoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="ff-e4" style="endArrow=block;html=1;rounded=0;strokeWidth=2" parent="1" target="ff-f2" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="490" y="310" as="sourcePoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="ff-e5" style="endArrow=block;html=1;rounded=0;strokeWidth=2" parent="1" source="ff-f1" target="ff-concat" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="ff-e6" style="endArrow=block;html=1;rounded=0;strokeWidth=2" parent="1" source="ff-f2" target="ff-concat" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="ff-e7" style="endArrow=block;html=1;rounded=0;strokeWidth=2" parent="1" source="ff-concat" target="ff-mlp" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="ff-e8" style="endArrow=block;html=1;rounded=0;strokeWidth=2" parent="1" source="ff-mlp" target="ff-out" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="T_03U-MYs_hwwDIbbTIi-1" value="shared timm backbone&#xa;global_pool=&quot;avg&quot;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=13" vertex="1" parent="1">
+                    <mxGeometry x="300" y="130" width="190" height="210" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+    <diagram id="cross-attention" name="MultiViewCrossAttention">
+        <mxGraphModel dx="775" dy="862" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="800" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="ca-title" value="MultiViewCrossAttention" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontStyle=1;fontSize=22" parent="1" vertex="1">
+                    <mxGeometry x="360" y="30" width="480" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="ca-front" value="front image&#xa;views[0]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=13" parent="1" vertex="1">
+                    <mxGeometry x="70" y="120" width="130" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="ca-top" value="top image&#xa;views[1]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=13" parent="1" vertex="1">
+                    <mxGeometry x="70" y="300" width="130" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="ca-backbone1" value="shared timm backbone&#xa;forward_features" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=13" parent="1" vertex="1">
+                    <mxGeometry x="260" y="110" width="170" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="ca-backbone2" value="shared timm backbone&#xa;forward_features" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=13" parent="1" vertex="1">
+                    <mxGeometry x="260" y="290" width="170" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="ca-proj1" value="1x1 Conv proj&#xa;attn_dim=256" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13" parent="1" vertex="1">
+                    <mxGeometry x="480" y="115" width="140" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="ca-proj2" value="1x1 Conv proj&#xa;attn_dim=256" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13" parent="1" vertex="1">
+                    <mxGeometry x="480" y="295" width="140" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="ca-t1" value="tokens t1&#xa;LayerNorm&#xa;query" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13" parent="1" vertex="1">
+                    <mxGeometry x="680" y="115" width="130" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="ca-t2" value="tokens t2&#xa;LayerNorm&#xa;key/value" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13" parent="1" vertex="1">
+                    <mxGeometry x="680" y="295" width="130" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="ca-attn" value="MultiheadAttention&#xa;t1 attends to t2&#xa;single direction" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=13;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="870" y="185" width="190" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="ca-pool" value="mean pooling" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=13" parent="1" vertex="1">
+                    <mxGeometry x="895" y="380" width="140" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="ca-fc" value="Linear" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=13" parent="1" vertex="1">
+                    <mxGeometry x="895" y="495" width="140" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="ca-out" value="stability logit" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=13;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="910" y="610" width="110" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="ca-e1" style="endArrow=block;html=1;rounded=0;strokeWidth=2" parent="1" source="ca-front" target="ca-backbone1" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="ca-e2" style="endArrow=block;html=1;rounded=0;strokeWidth=2" parent="1" source="ca-top" target="ca-backbone2" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="ca-e3" style="endArrow=block;html=1;rounded=0;strokeWidth=2" parent="1" source="ca-backbone1" target="ca-proj1" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="ca-e4" style="endArrow=block;html=1;rounded=0;strokeWidth=2" parent="1" source="ca-backbone2" target="ca-proj2" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="ca-e5" style="endArrow=block;html=1;rounded=0;strokeWidth=2" parent="1" source="ca-proj1" target="ca-t1" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="ca-e6" style="endArrow=block;html=1;rounded=0;strokeWidth=2" parent="1" source="ca-proj2" target="ca-t2" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="ca-e7" style="endArrow=block;html=1;rounded=0;strokeWidth=2" parent="1" source="ca-t1" target="ca-attn" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="ca-e8" style="endArrow=block;html=1;rounded=0;strokeWidth=2" parent="1" source="ca-t2" target="ca-attn" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="ca-e9" style="endArrow=block;html=1;rounded=0;strokeWidth=2" parent="1" source="ca-attn" target="ca-pool" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="ca-e10" style="endArrow=block;html=1;rounded=0;strokeWidth=2" parent="1" source="ca-pool" target="ca-fc" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="ca-e11" style="endArrow=block;html=1;rounded=0;strokeWidth=2" parent="1" source="ca-fc" target="ca-out" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+    <diagram id="bidirectional-cross-attention" name="MultiViewBidirectionalCrossAttention">
+        <mxGraphModel dx="1164" dy="861" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1300" pageHeight="850" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="bca-title" value="MultiViewBidirectionalCrossAttention" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontStyle=1;fontSize=22" parent="1" vertex="1">
+                    <mxGeometry x="360" y="30" width="580" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="bca-front" value="front image&#xa;views[0]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=13" parent="1" vertex="1">
+                    <mxGeometry x="70" y="120" width="130" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="bca-top" value="top image&#xa;views[1]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=13" parent="1" vertex="1">
+                    <mxGeometry x="70" y="310" width="130" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="bca-backbone1" value="shared timm backbone&#xa;forward_features" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=13" parent="1" vertex="1">
+                    <mxGeometry x="255" y="110" width="175" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="bca-backbone2" value="shared timm backbone&#xa;forward_features" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=13" parent="1" vertex="1">
+                    <mxGeometry x="255" y="300" width="175" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="bca-token1" value="1x1 proj + pos embed&#xa;tokens t1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13" parent="1" vertex="1">
+                    <mxGeometry x="500" y="110" width="170" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="bca-token2" value="1x1 proj + pos embed&#xa;tokens t2" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13" parent="1" vertex="1">
+                    <mxGeometry x="500" y="300" width="170" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="bca-loop" value="repeat num_layers times" style="swimlane;whiteSpace=wrap;html=1;startSize=32;fillColor=#ffffff;strokeColor=#999999;fontSize=13;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="740" y="95" width="290" height="300" as="geometry"/>
+                </mxCell>
+                <mxCell id="bca-attn12" value="CrossAttentionBlock 12&#xa;t1 query, t2 key/value&#xa;t1 = t1 + attn_out" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=13" parent="bca-loop" vertex="1">
+                    <mxGeometry x="35" y="60" width="220" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="bca-attn21" value="CrossAttentionBlock 21&#xa;t2 query, t1 key/value&#xa;t2 = t2 + attn_out" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=13" parent="bca-loop" vertex="1">
+                    <mxGeometry x="35" y="185" width="220" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="bca-pool1" value="mean(t1)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=13" parent="1" vertex="1">
+                    <mxGeometry x="1100" y="135" width="120" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="bca-pool2" value="mean(t2)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=13" parent="1" vertex="1">
+                    <mxGeometry x="1100" y="300" width="120" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="bca-classifier" value="concat + classifier MLP&#xa;Linear - BN - ReLU - Dropout&#xa;Linear - ReLU - Linear" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=13" parent="1" vertex="1">
+                    <mxGeometry x="770" y="500" width="245" height="105" as="geometry"/>
+                </mxCell>
+                <mxCell id="bca-out" value="stability logit" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=13;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="835" y="690" width="115" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="bca-note" value="Current main .py training/eval scripts instantiate this model." style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12" parent="1" vertex="1">
+                    <mxGeometry x="70" y="610" width="300" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="bca-e1" style="endArrow=block;html=1;rounded=0;strokeWidth=2" parent="1" source="bca-front" target="bca-backbone1" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="bca-e2" style="endArrow=block;html=1;rounded=0;strokeWidth=2" parent="1" source="bca-top" target="bca-backbone2" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="bca-e3" style="endArrow=block;html=1;rounded=0;strokeWidth=2" parent="1" source="bca-backbone1" target="bca-token1" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="bca-e4" style="endArrow=block;html=1;rounded=0;strokeWidth=2" parent="1" source="bca-backbone2" target="bca-token2" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="bca-e5" style="endArrow=block;html=1;rounded=0;strokeWidth=2" parent="1" source="bca-token1" target="bca-attn12" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="bca-e6" style="endArrow=block;html=1;rounded=0;strokeWidth=2" parent="1" source="bca-token2" target="bca-attn21" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="bca-e7" style="endArrow=block;html=1;rounded=0;strokeWidth=2" parent="1" source="bca-attn12" target="bca-pool1" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="bca-e8" style="endArrow=block;html=1;rounded=0;strokeWidth=2" parent="1" source="bca-attn21" target="bca-pool2" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="bca-e9" style="endArrow=block;html=1;rounded=0;strokeWidth=2" parent="1" source="bca-pool1" target="bca-classifier" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="bca-e10" style="endArrow=block;html=1;rounded=0;strokeWidth=2" parent="1" source="bca-pool2" target="bca-classifier" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="bca-e11" style="endArrow=block;html=1;rounded=0;strokeWidth=2" parent="1" source="bca-classifier" target="bca-out" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+    <diagram id="dual-encoder-bidirectional" name="MultiViewDualEncoderBidirectionalCrossAttention">
+        <mxGraphModel dx="1164" dy="861" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1300" pageHeight="850" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="de-title" value="MultiViewDualEncoderBidirectionalCrossAttention" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontStyle=1;fontSize=22" parent="1" vertex="1">
+                    <mxGeometry x="310" y="30" width="680" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="de-front" value="front image&#xa;views[0]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=13" parent="1" vertex="1">
+                    <mxGeometry x="70" y="120" width="130" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="de-top" value="top image&#xa;views[1]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=13" parent="1" vertex="1">
+                    <mxGeometry x="70" y="310" width="130" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="de-backbone1" value="front_backbone&#xa;timm model" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=13;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="255" y="110" width="175" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="de-backbone2" value="top_backbone&#xa;timm model" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=13;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="255" y="300" width="175" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="de-token1" value="front_proj + front_pos&#xa;t_front" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13" parent="1" vertex="1">
+                    <mxGeometry x="500" y="110" width="170" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="de-token2" value="top_proj + top_pos&#xa;t_top" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13" parent="1" vertex="1">
+                    <mxGeometry x="500" y="300" width="170" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="de-loop" value="repeat num_layers times" style="swimlane;whiteSpace=wrap;html=1;startSize=32;fillColor=#ffffff;strokeColor=#999999;fontSize=13;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="740" y="95" width="290" height="300" as="geometry"/>
+                </mxCell>
+                <mxCell id="de-attn-front" value="CrossAttentionBlock&#xa;t_front query&#xa;t_top key/value" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=13" parent="de-loop" vertex="1">
+                    <mxGeometry x="35" y="60" width="220" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="de-attn-top" value="CrossAttentionBlock&#xa;t_top query&#xa;t_front key/value" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=13" parent="de-loop" vertex="1">
+                    <mxGeometry x="35" y="185" width="220" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="de-pool1" value="mean(t_front)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=13" parent="1" vertex="1">
+                    <mxGeometry x="1100" y="135" width="130" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="de-pool2" value="mean(t_top)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=13" parent="1" vertex="1">
+                    <mxGeometry x="1100" y="300" width="130" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="de-classifier" value="concat + classifier MLP&#xa;Linear - BN - ReLU - Dropout&#xa;Linear - ReLU - Linear" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=13" parent="1" vertex="1">
+                    <mxGeometry x="770" y="500" width="245" height="105" as="geometry"/>
+                </mxCell>
+                <mxCell id="de-out" value="stability logit" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=13;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="835" y="690" width="115" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="de-note" value="Same bidirectional fusion idea, but front/top encoders are separate." style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12" parent="1" vertex="1">
+                    <mxGeometry x="70" y="610" width="300" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="de-e1" style="endArrow=block;html=1;rounded=0;strokeWidth=2" parent="1" source="de-front" target="de-backbone1" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="de-e2" style="endArrow=block;html=1;rounded=0;strokeWidth=2" parent="1" source="de-top" target="de-backbone2" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="de-e3" style="endArrow=block;html=1;rounded=0;strokeWidth=2" parent="1" source="de-backbone1" target="de-token1" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="de-e4" style="endArrow=block;html=1;rounded=0;strokeWidth=2" parent="1" source="de-backbone2" target="de-token2" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="de-e5" style="endArrow=block;html=1;rounded=0;strokeWidth=2" parent="1" source="de-token1" target="de-attn-front" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="de-e6" style="endArrow=block;html=1;rounded=0;strokeWidth=2" parent="1" source="de-token2" target="de-attn-top" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="de-e7" style="endArrow=block;html=1;rounded=0;strokeWidth=2" parent="1" source="de-attn-front" target="de-pool1" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="de-e8" style="endArrow=block;html=1;rounded=0;strokeWidth=2" parent="1" source="de-attn-top" target="de-pool2" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="de-e9" style="endArrow=block;html=1;rounded=0;strokeWidth=2" parent="1" source="de-pool1" target="de-classifier" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="de-e10" style="endArrow=block;html=1;rounded=0;strokeWidth=2" parent="1" source="de-pool2" target="de-classifier" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="de-e11" style="endArrow=block;html=1;rounded=0;strokeWidth=2" parent="1" source="de-classifier" target="de-out" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+    <diagram id="model-ema" name="ModelEMA">
+        <mxGraphModel dx="1164" dy="861" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1000" pageHeight="700" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="ema-title" value="ModelEMA" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontStyle=1;fontSize=22" parent="1" vertex="1">
+                    <mxGeometry x="260" y="30" width="480" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="ema-data" value="training batch" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=13" parent="1" vertex="1">
+                    <mxGeometry x="80" y="150" width="140" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="ema-model" value="train model&#xa;backprop + optimizer.step()" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=13;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="320" y="130" width="220" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="ema-update" value="ema.update(model)&#xa;floating params:&#xa;ema = decay * ema + (1-decay) * model" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13" parent="1" vertex="1">
+                    <mxGeometry x="640" y="120" width="250" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="ema-shadow" value="ema_model&#xa;copy.deepcopy(model)&#xa;requires_grad=False" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=13;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="640" y="350" width="250" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="ema-eval" value="validation / eval&#xa;optionally use ema_model" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=13" parent="1" vertex="1">
+                    <mxGeometry x="350" y="370" width="190" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="ema-note" value="ModelEMA is not a prediction architecture. It keeps a smoother copy of model weights during training." style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fillColor=#f5f5f5;strokeColor=#666666;fontSize=12" parent="1" vertex="1">
+                    <mxGeometry x="80" y="520" width="360" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="ema-e1" style="endArrow=block;html=1;rounded=0;strokeWidth=2" parent="1" source="ema-data" target="ema-model" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="ema-e2" style="endArrow=block;html=1;rounded=0;strokeWidth=2" parent="1" source="ema-model" target="ema-update" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="ema-e3" style="endArrow=block;html=1;rounded=0;strokeWidth=2" parent="1" source="ema-update" target="ema-shadow" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="ema-e4" style="endArrow=block;html=1;rounded=0;strokeWidth=2" parent="1" source="ema-shadow" target="ema-eval" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
